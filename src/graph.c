@@ -16,7 +16,7 @@ typedef struct {
     int h;
     Cell *cells;
 } Grid;
-/* Область определения.
+/* Области определения и значений.
  Точки не инициализированы и не определены. */
 Grid *Grid_new(int h, int w) {
     Grid *g = malloc(sizeof(Grid));
@@ -30,25 +30,25 @@ Grid *Grid_new(int h, int w) {
     }
     return g;
 }
-/* Точки в области определения */
+/* Точки в областях определения и значений. */
 Cell *Grid_get_cell(Grid *g, int x, int y) {
     x = x;
     y = y;
     return &(g->cells[y * g->w + x]);
 }
-/* Обнулить точку графика функции */
+/* Обнулить точки в областях определения и значений. */
 void kill(Grid *g, int x, int y) {
     Grid_get_cell(g, x, y)->function = false;
 }
-/* Активация точки графика функции */
+/* Активация точки графика функции. */
 void sustain(Grid *g, int x, int y) {
     Grid_get_cell(g, x, y)->function = true;
 }
-/* Точки графика функции */
+/* Статус точки. */
 boolean function(Grid *g, int x, int y) {
     return Grid_get_cell(g, x, y)->function;
 }
-/* Почистить зарезервированую память */
+/* Почистить зарезервированую память. */
 void Grid_clear(Grid *g) {
     int x, y;
     for (x = 0; x < g->w; x++) {
@@ -56,7 +56,7 @@ void Grid_clear(Grid *g) {
             kill(g, x, y);
     }
 }
-/* Освободить динамическую память */
+/* Освободить динамическую память. */
 void Grid_free(Grid *g) {
     free(g->cells);
     free(g);
