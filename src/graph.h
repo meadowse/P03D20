@@ -1,5 +1,5 @@
-#ifndef GRAPH_H
-#define GRAPH_H
+#ifndef P03D20_0_SRC_GRAPH_H_
+#define P03D20_0_SRC_GRAPH_H_
 
 typedef int boolean;
 
@@ -22,4 +22,4 @@ void Grid_clear(Grid *g);
 void Grid_free(Grid *g);
 void Grid_print(Grid *g);
 
-#endif
+#endif  // P03D20_0_SRC_GRAPH_H_
