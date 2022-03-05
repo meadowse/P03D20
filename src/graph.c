@@ -16,7 +16,7 @@ typedef struct {
     int h;
     Cell *cells;
 } Grid;
-/* Области определения и значений.
+/* Координатная плоскость.
  Точки не инициализированы и не определены. */
 Grid *Grid_new(int h, int w) {
     Grid *g = malloc(sizeof(Grid));
@@ -30,13 +30,13 @@ Grid *Grid_new(int h, int w) {
     }
     return g;
 }
-/* Точки в областях определения и значений. */
+/* Точки на координатной плоскости. */
 Cell *Grid_get_cell(Grid *g, int x, int y) {
     x = x;
     y = y;
     return &(g->cells[y * g->w + x]);
 }
-/* Обнулить точки в областях определения и значений. */
+/* Обнулить точки на координатной плоскости. */
 void kill(Grid *g, int x, int y) {
     Grid_get_cell(g, x, y)->function = false;
 }
@@ -61,7 +61,7 @@ void Grid_free(Grid *g) {
     free(g->cells);
     free(g);
 }
-void Grid_print(Grid *g) { /* печатает функцию */
+void Grid_print(Grid *g) { /* Печатает функцию. */
     int x, y;
     for (y = 0; y < g->h; y++) {
         for (x = 0; x < g->w; x++) {
