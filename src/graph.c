@@ -2,20 +2,28 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include "graph.h"
+
 #define false 0
 #define true 1
 
-typedef int boolean;
-
-typedef struct {
-    boolean function;
-} Cell;
-
-typedef struct {
-    int w;
-    int h;
-    Cell *cells;
-} Grid;
+int main(void) {
+    Grid *g;
+    g = Grid_new(25, 80);
+    Grid_clear(g);
+    int y;
+    float i, j;
+    for (int x = 0; x < g->w; x++) {
+        j = x * 0.05 * M_PI;
+        i = sin(cos(2 * j));
+        i = i * 21 + 3 + (1 - i) * 10;
+        y = round(i);
+        if (y >= 0 && y <= 24)
+            sustain(g, x, y);}
+    Grid_print(g);
+    Grid_free(g);
+    return 0;
+}
 /* Координатная плоскость.
  Точки не инициализированы и не определены. */
 Grid *Grid_new(int h, int w) {
@@ -30,24 +38,6 @@ Grid *Grid_new(int h, int w) {
     }
     return g;
 }
-/* Точки на координатной плоскости. */
-Cell *Grid_get_cell(Grid *g, int x, int y) {
-    x = x;
-    y = y;
-    return &(g->cells[y * g->w + x]);
-}
-/* Обнулить точки на координатной плоскости. */
-void kill(Grid *g, int x, int y) {
-    Grid_get_cell(g, x, y)->function = false;
-}
-/* Активация точки графика функции. */
-void sustain(Grid *g, int x, int y) {
-    Grid_get_cell(g, x, y)->function = true;
-}
-/* Статус точки. */
-boolean function(Grid *g, int x, int y) {
-    return Grid_get_cell(g, x, y)->function;
-}
 /* Почистить зарезервированую память. */
 void Grid_clear(Grid *g) {
     int x, y;
@@ -56,10 +46,21 @@ void Grid_clear(Grid *g) {
             kill(g, x, y);
     }
 }
-/* Освободить динамическую память. */
-void Grid_free(Grid *g) {
-    free(g->cells);
-    free(g);
+/* Обнулить точки на координатной плоскости. */
+void kill(Grid *g, int x, int y) {
+    Grid_get_cell(g, x, y)->function = false;
+}
+/* Точки на координатной плоскости. */
+Cell *Grid_get_cell(Grid *g, int x, int y) {
+    return &(g->cells[y * g->w + x]);
+}
+/* Статус точки. */
+boolean function(Grid *g, int x, int y) {
+    return Grid_get_cell(g, x, y)->function;
+}
+/* Активация точки графика функции. */
+void sustain(Grid *g, int x, int y) {
+    Grid_get_cell(g, x, y)->function = true;
 }
 void Grid_print(Grid *g) { /* Печатает функцию. */
     int x, y;
@@ -73,20 +74,8 @@ void Grid_print(Grid *g) { /* Печатает функцию. */
         printf("\n");
   }
 }
-int main(void) {
-    Grid *g;
-    g = Grid_new(25, 80);
-    Grid_clear(g);
-    int x, y;
-    float i, j;
-    for (int x = 0; x < g->w; x++) {
-        j = x * 0.05 * M_PI;
-        i = sin(cos(2 * j));
-        i = i * 21 + 3 + (1 - i) * 10;
-        y = round(i);
-        if (y >= 0 && y <= 24)
-            sustain(g, x, y);}
-    Grid_print(g);
-    Grid_free(g);
-    return 0;
+/* Освободить динамическую память. */
+void Grid_free(Grid *g) {
+    free(g->cells);
+    free(g);
 }
