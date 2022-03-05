@@ -11,13 +11,11 @@ int main(void) {
     Grid *g;
     g = Grid_new(25, 80);
     Grid_clear(g);
-    int y;
-    float i, j;
     for (int x = 0; x < g->w; x++) {
-        j = x * 0.05 * M_PI;
-        i = sin(cos(2 * j));
+        float j = x * 0.05 * M_PI;
+        float i = sin(cos(2 * j));
         i = i * 21 + 3 + (1 - i) * 10;
-        y = round(i);
+        int y = round(i);
         if (y >= 0 && y <= 24)
             sustain(g, x, y);}
     Grid_print(g);
