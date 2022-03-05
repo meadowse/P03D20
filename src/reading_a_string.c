@@ -5,7 +5,6 @@
 
 int input_string(char* string, int size);
 
-
 int main() {
     int size = 2;
     char* str = (char*)malloc(size);
@@ -13,7 +12,7 @@ int main() {
     printf("%d", n);
     free(str);
     str = NULL;
-    
+
     return 0;
 }
 
