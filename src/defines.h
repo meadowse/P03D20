@@ -3,15 +3,6 @@
 
 #include <math.h>
 
-/*  Константы связанные с подсчетом и выводом на экран  */
-#define MIN_X 0.0
-#define MAX_X 4.0 * M_PI
-#define MIN_Y -1.0
-#define MAX_Y 1.0
-
-#define SRC_W 80
-#define SRC_H 25
-
 /*  ID математических операторов / лексем  */
 #define NUM 0
 #define SUM 1
