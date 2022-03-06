@@ -44,12 +44,12 @@ int priority(int id) {
 }
 
 void transformation(int id, double rez, Stack *stack, Queue *out, int i) {
-    if (is_digit(id)) {
+    if (is_digit_or_x(id)) {
         add_queue(out, id, rez);
     } else if (is_prefix(id)) {
         add_stack(stack, id, rez);
     } else if (is_close_bracket(id)) {
-        close_bracket(stack, id, i);
+        close_bracket(stack, out, i);
     } else if (is_binary(id)) {
         restack_binary(id, stack, out);
         add_stack(stack, id, rez);

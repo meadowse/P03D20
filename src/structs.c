@@ -58,7 +58,7 @@ void kill_queue(Queue *que) {
 }
 
 Queue *clone_queue(Queue *que) {
-    Queue *q = init_queue();
+    Queue *q = create_queue();
     if (q != NULL) {
         struct Queue_Node *node = que->first;
         while (node != NULL) {

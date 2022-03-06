@@ -27,7 +27,7 @@ double minus(double numb);  // унарный минус
 double sum(double a, double b);  // '+'
 double dif(double a, double b);  // '-'
 double mult(double a, double b);  // '*'
-double div(double a, double b);  // '/'
+double division(double a, double b);  // '/'
 double ctg(double numb);
 
 /*

@@ -12,7 +12,7 @@ double calculate(double x, Queue *equation) {
         consume_calc(stack, id, rez, i, x);
         i++;
     }
-    take_queue(stack, &id, &rez);
+    take_stack(stack, &id, &rez);
     kill_stack(stack);
     kill_queue(equation);
     return rez;
@@ -43,9 +43,9 @@ double(*get_binary(int id))(double, double) {
     if (id == SUM) {
         flag = sum;
     } else if (id == SUB) {
-        flag = substaction;
+        flag = dif;
     } else if (id == MUL) {
-        flag = multiply;
+        flag = mult;
     } else if (id == DIV) {
         flag = division;
     } else if (id == POW) {
@@ -70,7 +70,7 @@ double mult(double a, double b) {
     return a * b;
 }
 
-double div(double a, double b) {
+double division(double a, double b) {
     return a / b;
 }
 

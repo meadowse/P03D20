@@ -65,7 +65,6 @@ int is_ln(char *str);
 int trigonometry_length(int id);  // длина тригоном-ой ф-ии через id
 
 int digit_length(char *str);  // длина числа
-int is_digit(char str);
 
 /*
  Функция парсящая одну лексему
