@@ -26,9 +26,9 @@ int priority(int id);  // возвращает приотритет операц
 выходная очередь
 номер итерации
 */
-void transformation(int id, double rez, Stack *stack, Queue *que, int i);
+void transformation(int id, double rez, Stack *stack, Queue *out, int i);
 
-int is_digit(int id);  // проверка на число/переменную
+int is_digit_or_x(int id);  // проверка на число/переменную
 
 int is_close_bracket(int id);
 
@@ -40,14 +40,14 @@ int is_binary(int id);
 Функция обрабатывающая закрывающую скобку по польской нотации
 (выталкивает всё до открывающей скобки из стэка в конечную очередь)
 */
-void close_bracket(Stack *stack, Queue *que, int i);
+void close_bracket(Stack *stack, Queue *out, int i);
 
 /*
 Функция обрабатывающая появление новой бинарной операции.
 Выталкивает из стэка в конечную очередь все операции с таким же или большим приоритетом,
 если они находятся в голове стэка.
  */
-void restack_binary(int id, Stack *stack, Queue *que);
+void restack_binary(int id, Stack *stack, Queue *out);
 
 // Функция переводящая операцию из символа ('+', '-' и тд.) в числовой эквивалент
 int op_to_int(char id);
@@ -65,6 +65,7 @@ int is_ln(char *str);
 int trigonometry_length(int id);  // длина тригоном-ой ф-ии через id
 
 int digit_length(char *str);  // длина числа
+int is_digit(char str);
 
 /*
  Функция парсящая одну лексему
