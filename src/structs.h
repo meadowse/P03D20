@@ -14,7 +14,7 @@ struct Queue_Node {
 struct Queue_Node *create_node(int id, double rez);  // ф-я создания ноды
 
 typedef struct {
-    struct Queue_Node *first;  //первый элемент в очереди
+    struct Queue_Node *first;  // первый элемент в очереди
 } Queue;  // тип очередь
 
 Queue *create_queue();  // ф-я создания очереди
@@ -53,5 +53,16 @@ Stack *create_stack();
 Queue *que - очередь в конец которой надо вставить лексему
 */
 void add_stack(Stack *stack, int id, double rez);
+
+/* 
+ф-я получения лексемы из конца стэка
+Stack *stack - стэк из конца которого нужно получить лексему
+Возвращает:
+1 - если лексема получена успешно
+0 - если стэк был пуст
+*/
+int take_stack(Stack *stack, int *id, double *rez);
+
+void kill_stack(Stack *stack);  // освобождение памяти стэка
 
 #endif  // SRC_STRUCTS_H_
