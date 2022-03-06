@@ -52,4 +52,29 @@ void restack_binary(int id, Stack *stack, Queue *que);
 // Функция переводящая операцию из символа ('+', '-' и тд.) в числовой эквивалент
 int op_to_int(char id);
 
+// Функция переводящая тригонометрическую ф-ю в числовой эквивалент
+int trigonometry_to_int(char *str);
+
+int is_sin(char *str);
+int is_cos(char *str);
+int is_tan(char *str);
+int is_ctg(char *str);
+int is_sqrt(char *str);
+int is_ln(char *str);
+
+int trigonometry_length(int id);  // длина тригоном-ой ф-ии через id
+
+int digit_length(char *str);  // длина числа
+
+/*
+ Функция парсящая одну лексему
+str - строка лексем
+i - смещение по строке в символах
+*is_unary - указатель на переменную, храняющую является ли ближайший минус унарным
+*que - указатель на выходную очередь, в которую будут записаны лексемы
+Возврат:
+i - новое смещение по строке в символах (с утчетом прочтенной лексемы)
+*/
+int parse_step(char *str, int i, int *is_unary, Queue *que);
+
 #endif  // SRC_RPN_H_
