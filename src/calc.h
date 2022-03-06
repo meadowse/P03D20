@@ -36,6 +36,6 @@ double ctg(double numb);
 Параметры:
 *stack - стэк калькулятора для подсчета результата
 */
-void consume_calc(Stack *stack, int op, double value, int i, double x);
+void consume_calc(Stack *stack, int op, double rez, int i, double x);
 
 #endif  // SRC_CALC_H_
