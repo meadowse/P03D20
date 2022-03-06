@@ -1,6 +1,8 @@
-all: graph.o structs.o calc.o RPN.o
-	gcc -Wall -Werror -Wextra graph.o structs.o calc.o RPN.o -o ../build/graph
+all: build clean
 
+build: graph.o structs.o calc.o RPN.o
+	gcc -Wall -Werror -Wextra -c calc.c RPN.c graph.c  structs.c
+	gcc -Wall -Werror -Wextra graph.o structs.o calc.o RPN.o -o ../build/graph
 calc.o: calc.c
 	gcc -Wall -Werror -Wextra -c calc.c -o
 
