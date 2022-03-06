@@ -25,6 +25,7 @@ int main() {
             sustain(g, x, y);}
     Grid_print(g);
     Grid_free(g);
+    kill_queue(q);
     free(test);
     return 0;
 }
