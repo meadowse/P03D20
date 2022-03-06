@@ -154,7 +154,7 @@ int is_cos(char *str) {
 }
 
 int is_tan(char *str) {
-    return !strncmp(str, "tg(", trigonometry_length(TAN) + 1);
+    return !strncmp(str, "tan(", trigonometry_length(TAN) + 1);
 }
 
 int is_ctg(char *str) {
